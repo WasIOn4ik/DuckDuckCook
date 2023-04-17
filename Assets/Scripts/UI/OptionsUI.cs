@@ -59,7 +59,7 @@ public class OptionsUI : MonoBehaviour
 
 	private void Start()
 	{
-		GameInstance.Instance.OnGameUnpaused += GameInstance_OnGameUnpaused;
+		GameInstance.Instance.OnLocalGameUnpaused += GameInstance_OnGameUnpaused;
 		UpdateVisual();
 		UpdateBindingsVisual();
 

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +23,7 @@ public class ClearCounter : BaseCounter
 				{
 					if (plateKitchenObject.TryAddIngridient(KitchenObject.GetKitchenObjectSO()))
 					{
-						KitchenObject.DestroySelf();
+						KitchenObject.DestroyKitchenObject(KitchenObject);
 					}
 				}
 				else
@@ -32,7 +32,7 @@ public class ClearCounter : BaseCounter
 					{
 						if (plateKitchenObject2.TryAddIngridient(player.KitchenObject.GetKitchenObjectSO()))
 						{
-							player.KitchenObject.DestroySelf();
+							KitchenObject.DestroyKitchenObject(player.KitchenObject);
 						}
 					}
 				}

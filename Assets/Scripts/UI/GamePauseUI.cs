@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,7 @@ public class GamePauseUI : MonoBehaviour
 		mainMenuButton.onClick.AddListener(
 			() =>
 			{
+				NetworkManager.Singleton.Shutdown();
 				GameInstance.Instance.ResumeGame();
 				Loader.Load(Loader.SceneName.MainMenuScene);
 			});
@@ -32,18 +34,18 @@ public class GamePauseUI : MonoBehaviour
 
 	private void Start()
 	{
-		GameInstance.Instance.OnGamePaused += GameInstance_OnGamePaused;
-		GameInstance.Instance.OnGameUnpaused += GameInstance_OnGameUnpaused;
+		GameInstance.Instance.OnLocalGamePaused += GameInstance_OnLocalGamePaused;
+		GameInstance.Instance.OnLocalGameUnpaused += GameInstance_OnLocalGameUnpaused;
 
 		Hide();
 	}
 
-	private void GameInstance_OnGameUnpaused(object sender, System.EventArgs e)
+	private void GameInstance_OnLocalGameUnpaused(object sender, System.EventArgs e)
 	{
 		Hide();
 	}
 
-	private void GameInstance_OnGamePaused(object sender, System.EventArgs e)
+	private void GameInstance_OnLocalGamePaused(object sender, System.EventArgs e)
 	{
 		Show();
 	}
